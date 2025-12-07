@@ -26,10 +26,14 @@ fun RandomUserScreen(
     viewModel: RandomUserViewModel = hiltViewModel()
 ) {
 
-    var results = 7
+    val results = 38
     LaunchedEffect(results) {
         viewModel.loadRandomUsers(results)
     }
+
+
+
+
 
     Column(
         modifier = Modifier.fillMaxSize().padding(16.dp),
@@ -44,18 +48,17 @@ fun RandomUserScreen(
             }
             is RandomUserState.Success -> {
                 LazyColumn(
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.padding(16.dp).weight(1f)
                 ) {
                     val randomUserList = userState.userData.orEmpty()
                     items(randomUserList) { item ->
-                        Text("${item?.name?.first}")
+                        Text("${item?.name?.first}", fontSize = 20.sp)
                     }
                 }
             }
             is RandomUserState.Error -> {
-                Text(text = "${userState.message}")
+                Text(text = userState.message)
             }
-            else -> {}
         }
     }
 
@@ -76,3 +79,5 @@ fun RandomUserScreePreview() {
         )
     )
 }
+
+

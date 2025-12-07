@@ -4,7 +4,8 @@ data class LocationModel(
     val city: String? = "",
     val coordinates: CoordinatesModel? = CoordinatesModel(),
     val country: String? = "",
-    val postcode: Int? = 0,
+//    val postcode: Int? = 0,
+    val postcode: String? = null,
     val state: String? = "",
     val street: StreetModel? = StreetModel(),
     val timezone: TimezoneModel? = TimezoneModel()
